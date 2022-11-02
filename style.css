@@ -1,0 +1,57 @@
+/* Reset browser impostazioni di default */
+ 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+
+ .flex {
+    display: flex;
+ }
+
+ .space-between {
+    justify-content: space-between;
+ }
+
+ .margin-80 {
+    margin: auto;
+    width: 80%;
+ }
+
+ .margin-60 {
+    margin: auto;
+    width: 60%;
+    text-align: center;
+ }
+
+ #griglia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 0 auto;
+ }
+
+ .quadrato {
+    border: 1px solid black;
+    width: calc( 100% / 8);
+    aspect-ratio: 1/1;
+ }
+
+ .active {
+    background-color: darkslateblue;
+    color: white;
+ }
+
+ main {
+    width: 70%;
+    margin: auto;
+ }
+
+ .purple {
+    background-color: darkslateblue;
+ }
+
+ 
