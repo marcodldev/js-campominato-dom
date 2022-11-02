@@ -42,34 +42,59 @@ const griglia = document.getElementById("griglia");
 
 const bottone = document.getElementById("btnHtml");
 
+let display = document.getElementById("displayHTML");
+
 let arrayBombe = [];
 
-
-
 for (let k = 0; k < 16; k++) {
-    let funcNumRandom = numeroRandomPC(0,64);
+    let funcNumRandom = numeroRandomPC(0, 64);
     arrayBombe.push(funcNumRandom);
 }
 
 console.log(arrayBombe)
 
-bottone.addEventListener('click', function() {
+bottone.addEventListener('click', function () {
 
     for (let i = 1; i <= 64; i++) {
         let elementoCorrente = quadrati(i);
 
         elementoCorrente.addEventListener('click', function () {
             this.classList.toggle('active');
+
+            //innerHTML ottenere / scivere qualcosa in un  elemento html selezioanto
+            let valoreELemento = parseInt(this.innerText);
+            //controllare il valore ttenuto è incluso nelle bombe
+             //true o false
+
+            if (arrayBombe.includes(valoreELemento)) {
+                console.log("bomba");
+                this.classList.add("bomba");
+                display.innerHTML = ("Hai calpestato una bomba!");
+            } else {
+                console.log("niente bomba");
+            }
+
+
         })
 
         elementoCorrente.innerHTML = i;
-        elementoCorrente.classList.add("text-center","align-items-center");
+        elementoCorrente.classList.add("text-center", "align-items-center");
+
+
 
 
         griglia.append(elementoCorrente);
     }
 
-}, {once : true});
+
+}, { once: true });
+
+
+
+
+
+// FUNZIONI 
+
 
 function quadrati(num) {
     const div = document.createElement("div");
