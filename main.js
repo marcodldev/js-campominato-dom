@@ -46,11 +46,9 @@ let display = document.getElementById("displayHTML");
 
 let arrayBombe = [];
 
-let punteggio = [];
+let sommaPunteggio = 0;
 
-let sommaPunteggio = "";
-
-sommaPunteggio = sommaPunteggio + punteggio;
+let giocoFinito = false;
 
 for (let k = 0; k < 16; k++) {
     let funcNumRandom = numeroRandomPC(0, 64);
@@ -63,32 +61,40 @@ bottone.addEventListener('click', function () {
 
     for (let i = 1; i <= 64; i++) {
         let elementoCorrente = quadrati(i);
-        
-        elementoCorrente.addEventListener('click', function () {
-            this.classList.toggle('active');
-            
-            let valoreELemento = parseInt(this.innerText);
 
-            if (arrayBombe.includes(valoreELemento)) {
-                console.log("bomba");
-                this.classList.add("bomba");
-                display.innerHTML = ("Hai calpestato una bomba!");
-            } else {
-                console.log("niente bomba");
-                punteggio.push(parseInt(1));
-                display.innerHTML = (`Il tuo punteggio è ${parseInt(sommaPunteggio)}`);
+        elementoCorrente.addEventListener('click', function () {
+            if (!giocoFinito) {
+                
+
+                let valoreELemento = parseInt(this.innerText);
+
+                if (arrayBombe.includes(valoreELemento)) {
+                    console.log("bomba");
+                    this.classList.add("bomba");
+                    display.innerHTML = (`Hai calpestato una bomba! Il tuo punteggio: ${sommaPunteggio}`);
+                    giocoFinito = true;
+                } else {
+                    if (!this.classList.contains("active")) {
+                        this.classList.add('active');
+                        console.log("niente bomba");
+                        sommaPunteggio++;
+                        display.innerHTML = (`Il tuo punteggio è ${parseInt(sommaPunteggio)}`);
+                    }
+                }
             }
         })
         elementoCorrente.innerHTML = i;
         elementoCorrente.classList.add("text-center", "align-items-center");
         griglia.append(elementoCorrente);
+
     }
+
 
 
 }, { once: true });
 
 
-console.log(punteggio);
+console.log(sommaPunteggio);
 
 
 
