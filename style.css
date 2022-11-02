@@ -30,7 +30,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 50%;
+    width: 35%;
     margin: 0 auto;
  }
 
@@ -38,6 +38,7 @@
     border: 1px solid black;
     width: calc( 100% / 8);
     aspect-ratio: 1/1;
+    cursor: crosshair;
  }
 
  .active {
@@ -47,6 +48,7 @@
 
  main {
     margin: auto;
+    height: 80vh;
  }
 
  .purple {
@@ -57,3 +59,11 @@
    background-color: red;
  }
  
+ .mainbg {
+   background-color: #7fffd4;
+ }
+
+ img.container {
+   width: 70px;
+   height: max-content;
+}

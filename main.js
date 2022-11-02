@@ -46,6 +46,12 @@ let display = document.getElementById("displayHTML");
 
 let arrayBombe = [];
 
+let punteggio = [];
+
+let sommaPunteggio = "";
+
+sommaPunteggio = sommaPunteggio + punteggio;
+
 for (let k = 0; k < 16; k++) {
     let funcNumRandom = numeroRandomPC(0, 64);
     arrayBombe.push(funcNumRandom);
@@ -57,14 +63,11 @@ bottone.addEventListener('click', function () {
 
     for (let i = 1; i <= 64; i++) {
         let elementoCorrente = quadrati(i);
-
+        
         elementoCorrente.addEventListener('click', function () {
             this.classList.toggle('active');
-
-            //innerHTML ottenere / scivere qualcosa in un  elemento html selezioanto
+            
             let valoreELemento = parseInt(this.innerText);
-            //controllare il valore ttenuto è incluso nelle bombe
-             //true o false
 
             if (arrayBombe.includes(valoreELemento)) {
                 console.log("bomba");
@@ -72,17 +75,12 @@ bottone.addEventListener('click', function () {
                 display.innerHTML = ("Hai calpestato una bomba!");
             } else {
                 console.log("niente bomba");
+                punteggio.push(parseInt(1));
+                display.innerHTML = (`Il tuo punteggio è ${parseInt(sommaPunteggio)}`);
             }
-
-
         })
-
         elementoCorrente.innerHTML = i;
         elementoCorrente.classList.add("text-center", "align-items-center");
-
-
-
-
         griglia.append(elementoCorrente);
     }
 
@@ -90,6 +88,7 @@ bottone.addEventListener('click', function () {
 }, { once: true });
 
 
+console.log(punteggio);
 
 
 
