@@ -70,7 +70,8 @@ bottone.addEventListener('click', function () {
 
                 if (arrayBombe.includes(valoreELemento)) {
                     console.log("bomba");
-                    this.classList.add("bomba");
+                    this.classList.add("bomba","fa-solid", "fa-bomb", "fs-1");
+                    this.innerHTML = (" <i></i> ");
                     display.innerHTML = (`Hai calpestato una bomba! Il tuo punteggio: ${sommaPunteggio}`);
                     giocoFinito = true;
                 } else {
